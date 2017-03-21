@@ -20,6 +20,7 @@ first time to get an initial backup.
 # Modules
 import os
 import sys
+import Tkinter
 
 # Variablas
 
@@ -30,6 +31,9 @@ start_script = "start_timemachine.sh"
 la = "downloads/plist_file"
 sl = 'downloads/start_script'
 directory = "/Users/jwils156/bin"
+
+window = Tk()
+win.size("600x200")
 
 # Is TimeMachine configured
 # If not, configure TimeMachine
