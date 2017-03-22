@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python2
 
 """
 Installation script for TimeMachine Automation Script (TMAS)
@@ -25,15 +25,17 @@ import Tkinter
 # Variablas
 
 user_name = os.environ["USER"]
+os_name = os.uname()
 downloads = "/Users/user_name/Downloads"
 plist_file = "com.captam3rica.timemachinescript.plist"
 start_script = "start_timemachine.sh"
 la = "downloads/plist_file"
 sl = 'downloads/start_script'
-directory = "/Users/jwils156/bin"
+# directory = "/Users/jwils156/bin"
+# directory = "/home/captam3rica/bin/"
 
-window = Tk()
-win.size("600x200")
+# window = Tkinter
+# win.size("600x200")
 
 # Is TimeMachine configured
 # If not, configure TimeMachine
@@ -41,11 +43,18 @@ win.size("600x200")
 # Is the backup disk mounted
 # If not, ask user to attach disk
 
+# Check for OS (Mac OS, Linux, etc ...)
+if os_name == 'Darwin':
+    directory = "/Users/jwils156/bin"
+else:
+    directory = "/home/captam3rica/bin"
+    print os_name
+
 
 # Check for a bin folder
 # If bin does not exit, create it
-def does_path_exist(self):
-    self.bin_dir = os.path.dirname(directory)
+def does_path_exist(directory):
+    bin_dir = os.path.dirname(directory)
     if not os.path.exists(bin_dir):
         os.makedirs(bin_dir)
     else:
