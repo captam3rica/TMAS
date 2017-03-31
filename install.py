@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python
 
 """
 Installation script for TimeMachine Automation Script (TMAS)
@@ -20,35 +20,41 @@ first time to get an initial backup.
 # Modules
 import os
 import sys
+import subprocess
 import Tkinter
 
 # Variablas
 
 user_name = os.environ["USER"]
-os_name = os.uname()
-downloads = "/Users/user_name/Downloads"
+downloads = "/Users/%s/Downloads" % user_name
 plist_file = "com.captam3rica.timemachinescript.plist"
-start_script = "start_timemachine.sh"
-la = "downloads/plist_file"
-sl = 'downloads/start_script'
-# directory = "/Users/jwils156/bin"
-# directory = "/home/captam3rica/bin/"
+start_timemachine = "start_timemachine.sh"
+launch_agent = "downloads/%s" % plist_file
+script_location = 'downloads/%s' % start_timemachine
 
 # window = Tkinter
 # win.size("600x200")
+
+# Check for OS (Mac OS, Linux, etc ...)
+if sys.platform == 'darwin':
+    directory = '/Users/%s/bin/' % user_name
+    print "Mac OS"
+    print user_name
+else:
+    directory = "/home/captam3rica/bin"
+    print "Linux"
+
+
+def timemachine_conf(self):
+    self.time_machine = subprocess.Popen("tmutil --status")
+    if self.time_machine:
+        print "No need to configure TimeMachine"
 
 # Is TimeMachine configured
 # If not, configure TimeMachine
 
 # Is the backup disk mounted
 # If not, ask user to attach disk
-
-# Check for OS (Mac OS, Linux, etc ...)
-if os_name == 'Darwin':
-    directory = "/Users/jwils156/bin"
-else:
-    directory = "/home/captam3rica/bin"
-    print os_name
 
 
 # Check for a bin folder
