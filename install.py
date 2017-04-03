@@ -42,6 +42,7 @@ if sys.platform == 'darwin':
     print user_name
 else:
     directory = "/home/captam3rica/bin"
+    print "This app will only run on Mac OS"
     print "Linux"
 
 
