@@ -49,11 +49,16 @@ else:
 # If not, configure TimeMachine
 def timemachine_conf(self):
     self.time_machine = subprocess.Popen("tmutil --status")
-    self.backup_drive =  # this could look for a list of attached drives
+
     if self.time_machine:
         print "No need to configure TimeMachine"
     else:
         print "TimeMachine needs to be setup"
+        # List available disks
+        subprocess.Popen("diskutil listDisk")
+        # Take user input and add disk as TimeMachine Backup
+        self.backup_drive = input("Please enter then name of the backup /
+                                  drive list above(Case does matter): ")
         subprocess.Popen("tmutil %s" % self.backup_drive)
 
 # Is the backup disk mounted
