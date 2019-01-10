@@ -21,7 +21,7 @@ first time to get an initial backup.
 import os
 import sys
 import subprocess
-import Tkinter
+# import Tkinter
 
 # Variablas
 
@@ -58,7 +58,7 @@ def timemachine_conf(self):
         # List available disks
         subprocess.Popen("diskutil listDisk")
         # Take user input and add disk as TimeMachine Backup
-        self.backup_drive = input("Please enter then name of the backup /
+        self.backup_drive = input("Please enter then name of the backup \
                                   drive list above(Case does matter): ")
         subprocess.Popen("tmutil %s" % self.backup_drive)
 
